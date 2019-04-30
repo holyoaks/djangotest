@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+	
+	
+{% load core_template_tags %}
+
+	{% block title %}{{ title }}{% endblock %}
+
+    {% block extrastyle %}
+	    <link rel="stylesheet" href="{% staticfile 'testapp/css/menu.css' %}" />
+    {% endblock %}
+    
+    
+    {% block branding %}
+		<h1 id="site-name">Public Signs</h1>
+	{% endblock %}
+
+	{% block breadcrumbs %}
+	    <div class="breadcrumbs">
+	    <a href="{% url 'core:index' %}">Home</a>
+	    </div>
+	{% endblock %}
+    
+	{% block menu %}
+		<div id="menubar">
+			<div id="menu">
+				<div class="toolbarItem">
+					<span>Signs</span>
+					<div class="menuItem" id="publicSigns">
+						<div class="itemUL">
+                            <div><a id="alcoholVarianceSign" href="#}">Alcohol Variance</a></div>
+                            <div><a id="demolitionSign" href="#">Demolition and Removal</a></div>
+                            <div><a id="demolitionDelaySign" href="#">Demolition Delay</a></div>
+						</div>
+					</div>
+				</div>
+			</div>
+            <br clear="all" />
+            <hr class="menuLine">
+		</div>
+	{% endblock %}

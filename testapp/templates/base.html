@@ -1,0 +1,64 @@
+{% load core_template_tags %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>{% block title %}{% endblock %}</title>
+    {% block javascript %}
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	{% endblock javascript %}
+    {% block stylesheet %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" /> -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.0/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" integrity="sha256-JDBcnYeV19J14isGd3EtnsCQK05d8PczJ5+fvEvBJvI=" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="{% staticfile 'testapp/css/base.css' %}" />
+    <!-- <link rel="stylesheet" type="text/css" href="{% staticfile 'css/MonthPicker.css' %}" /> -->
+	{% endblock stylesheet %}
+	{% block extrastyle %}{% endblock extrastyle %}
+	<link rel='icon' type="image/x-icon" href="{% staticfile 'images/favicon.ico'%}" />
+</head>
+
+<body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}">
+    <!-- Header -->
+    {% block header %}
+    <div id="header">
+        <div id="branding" class="col-sm-8">
+            {% block branding %}{% endblock %}
+        </div>
+    </div>
+    {% endblock header %}
+    <!-- END Header -->
+    {% block breadcrumbs %}
+    <div class="breadcrumbs col-md-12">
+        <a href="{% url 'core:index' %}">Home</a>
+        {% if title %} &rsaquo; {{ title }}{% endif %}
+    </div>
+    {% endblock breadcrumbs %}
+    {% block menu %}{% endblock menu %}
+    <!-- Container -->
+    <div class="container-fluid">
+        <!-- Content -->
+        <div id="content" class="menu">
+            {% block dialogs %}{% endblock dialogs %}
+            {% block content %}
+                <div id="baseContentDiv">
+                    {% block baseContent %}
+                    <div class="header">
+                        Test
+                    </div>
+                    {% endblock baseContent %}
+                </div>
+            {% endblock content %}
+            {% block sidebar %}{% endblock %}
+            <br class="clear" />
+        </div>
+        <!-- END Content -->
+    </div>
+    <!-- END Container -->
+</body>
+</html>
